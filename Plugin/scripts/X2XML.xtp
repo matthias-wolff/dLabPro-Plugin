@@ -1,0 +1,64 @@
+#!dlabpro --nologo
+## Used by the dLabPro Eclipse plug-in to convert files
+
+function -X2XML_usage()
+{
+    "\n   SYNOPSIS:"                                                     -echo;
+    "\n     Binary files to dLabPro XML data file converter"             -echo;
+  "\n\n   USAGE:"                                                        -echo;
+    "\n     dlabpro $__SFILE__.xtp -T<format> <infile> <outfile>"        -echo;
+  "\n\n   ARGUMENTS:"                                                    -echo;
+    "\n     infile      input file (binary)"                             -echo;
+    "\n     outfile     output file (XML)"                               -echo;
+  "\n\n   OPTIONS:"                                                      -echo;
+    "\n     -h,--help       display this help and exit"                  -echo;
+    "\n     -T<format>  format of binary input file, where <format> is:" -echo;
+    "\n\n"                                                               -echo;
+}
+
+## == MAIN PROGRAM ==                                                           # =====================================
+
+"$1" "-h"     == if -X2XML_usage; 0 return; endif
+"$1" "--help" == if -X2XML_usage; 0 return; endif
+$$ 2 < if
+  "\nERROR: Missing command line options\n" -echo; -X2XML_usage;
+  1 return;
+endif
+
+data idFile;
+data idAux;
+var  sOutFn; $$ 2 > if "$3" else "$2.xml" endif sOutFn =;
+
+## Convert DNorm3 -> XML
+"$1" "-Tdn3" == if
+  "\nFilter  $1" -echo;
+  "\nReading $2" -echo;
+  "$2" idFile -restore ?error not if
+  	idFile.rtext "compressed" == if
+  		idFile idFile -dequantize;
+  	endif
+    "\nWriting $[sOutFn]" -echo;
+    sOutFn idFile /xml /zip -save ?error not if
+      "\nok\n" -echo;
+      0 return;
+    endif
+  endif
+  "\nFAILED\n" -echo;
+  1 return;
+endif
+
+## Convert 3rd-party formats -> XML
+{ { "$1" } } "-2" "right" idAux -strop;
+"\nFilter  $1" -echo;
+"\nReading $2" -echo;
+"$2" "${idAux[0,0]}" idFile stdfile -import ?error not if
+  "\nWriting $[sOutFn]" -echo;
+  sOutFn idFile /xml /zip -save ?error not if
+    "\nok\n" -echo;
+    0 return;
+  endif
+endif
+"\nFAILED\n" -echo;
+1 return;
+
+## EOF

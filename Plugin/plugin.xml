@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+     <extension point="org.eclipse.ui.editors">
+   <editor
+         class="de.tudresden.ias.eclipse.dlabpro.editors.itp.ITPEditor"
+         icon="icons/obj16/itp_file_obj.gif"
+         contributorClass="de.tudresden.ias.eclipse.dlabpro.editors.itp.ITPContributor"
+         name="dLabPro Script Editor"
+         id="de.tudresden.ias.eclipse.dlabpro.editors.itp.itpeditor"
+         extensions="itp,xtp">
+   </editor>
+      <editor
+         class="de.tudresden.ias.eclipse.dlabpro.editors.def.DEFEditor"
+         icon="icons/obj16/def_file_obj.gif"
+         contributorClass="de.tudresden.ias.eclipse.dlabpro.editors.def.DEFContributor"
+         name="dLabPro Class Definition File Editor"
+         id="de.tudresden.ias.eclipse.dlabpro.editors.def.defeditor"
+         extensions="def">
+   </editor>
+      <editor
+            class="de.tudresden.ias.eclipse.dlabpro.editors.vis.editor.VisEditor"
+            extensions="dn3, wav, xml, data.xml"
+            icon="icons/obj16/vised_file_obj.gif"
+            id="dLabPro.VisEditor"
+            name="dLabPro Data Display"/>
+</extension>
+   
+
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="de.tudresden.ias.eclipse.dlabpro.preferences.GeneralPreferencePage"
+            id="de.tudresden.ias.eclipse.dlabpro.preferences.GeneralPreferencePage"
+            name="dLabPro / UASR">
+      </page>
+      <page
+            category="de.tudresden.ias.eclipse.dlabpro.preferences.GeneralPreferencePage"
+            class="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptEditorsPreferencePage"
+            id="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptEditorsPreferencePage"
+            name="Script Editors">
+      </page>
+      <page
+            category="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptEditorsPreferencePage"
+            class="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptFoldingPreferencePage"
+            id="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptFoldingPreferencePage"
+            name="Folding">
+      </page>
+      <page
+            class="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptColoringPreferencePage"
+            name="Syntax Coloring"
+            id="de.tudresden.ias.eclipse.dlabpro.preferences.ColorPreferencePage"
+            category="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptEditorsPreferencePage"/>
+      <page
+            category="de.tudresden.ias.eclipse.dlabpro.preferences.GeneralPreferencePage"
+            class="de.tudresden.ias.eclipse.dlabpro.preferences.ProgramsPreferencePage"
+            id="de.tudresden.ias.eclipse.dlabpro.preferences.ProgramsPreferencePage"
+            name="Programs"/>
+      <page
+            category="de.tudresden.ias.eclipse.dlabpro.preferences.GeneralPreferencePage"
+            class="de.tudresden.ias.eclipse.dlabpro.editors.vis.preferences.VisEditorPreferencePage"
+            id="dLabPro Plugin.VisEditorPreferences"
+            name="Data Displays"/>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+         <initializer class="de.tudresden.ias.eclipse.dlabpro.preferences.PreferenceInitializer" /> 
+   </extension>
+      
+      <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="de.tudresden.ias.eclipse.dlabpro.launch.DLabProLaunchConfigurationDelegate"
+            name="dLabPro Script"
+            modes="run"
+            id="de.tudresden.ias.eclipse.dlabpro.run.launch.itp.itplaunchconfigurationtype"/>
+   </extension>
+      <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            type="de.tudresden.ias.eclipse.dlabpro.run.launch.itp.itplaunchconfigurationtype"
+            class="de.tudresden.ias.eclipse.dlabpro.launch.DLabProLaunchConfigurationTabGroup"
+            id="de.tudresden.ias.eclipse.dlabpro.run.launch.itp.itpmoduletabgroup"/>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="de.tudresden.ias.eclipse.dlabpro.run.launch.itp.itplaunchconfigurationtype"
+            icon="icons/obj16/dlabpro.gif"
+            id="de.tudresden.ias.eclipse.dlabpro.run.launch.DLabProLaunchConfigurationImage">
+      </launchConfigurationTypeImage>
+   </extension>
+<extension point="org.eclipse.ui.ide.resourceFilters">
+       <filter pattern="*.?tp" selected="false">            </filter>
+       <filter pattern="*.def" selected="false">            </filter>
+    </extension>
+
+<extension
+      point="org.eclipse.ui.popupMenus">
+   <viewerContribution
+         targetID="#DefEditorContext"
+         id="de.tudresden.ias.eclipse.dlabpro.run.actions.def.defeditorpopup">
+      <action
+            class="de.tudresden.ias.eclipse.dlabpro.actions.editor.ToggleCommentAction"
+            icon="icons/etool16/comment_edit.gif"
+            id="de.tudresden.ias.eclipse.dlabpro.run.actions.def.deftogglecommentaction"
+            label="Toggle Comment"
+            menubarPath="additions"/>
+   </viewerContribution>
+   <viewerContribution
+         id="de.tudresden.ias.eclipse.dlabpro.run.actions.itp.defeditorpopup"
+         targetID="#ItpEditorContext">
+      <action
+            class="de.tudresden.ias.eclipse.dlabpro.actions.editor.ToggleCommentAction"
+            icon="icons/etool16/comment_edit.gif"
+            id="de.tudresden.ias.eclipse.dlabpro.run.actions.itp.itptogglecommentaction"
+            label="Toggle Comment"
+            menubarPath="additions"/>
+   </viewerContribution>
+   <viewerContribution
+         id="dLabPro Plugin.FoldingMenuContribution"
+         targetID="#DLabProRulerContext">
+      <menu
+            id="dLabPro_Plugin.FoldingMenu"
+            label="F&amp;olding"
+            path="additions">
+         <separator
+               name="Group">
+         </separator>
+      </menu>
+      <action
+            class="de.tudresden.ias.eclipse.dlabpro.actions.editor.FoldingResetAction"
+            id="dLabPro Plugin.FoldingResetAction"
+            label="&amp;Reset Structure"
+            menubarPath="dLabPro_Plugin.FoldingMenu/Group">
+      </action>
+      <action
+            class="de.tudresden.ias.eclipse.dlabpro.actions.editor.FoldingCollapseAllAction"
+            enablesFor="*"
+            id="dLabPro Plugin.FoldingCollapseAllAction"
+            label="Collapse A&amp;ll"
+            menubarPath="dLabPro_Plugin.FoldingMenu/Group">
+      </action>
+      <action
+            class="de.tudresden.ias.eclipse.dlabpro.actions.editor.FoldingExpandAllAction"
+            id="dLabPro Plugin.FoldingCollapseAllAction"
+            label="Expand &amp;All"
+            menubarPath="dLabPro_Plugin.FoldingMenu/Group">
+      </action>
+      <action
+            class="org.eclipse.ui.texteditor.TaskRulerAction"
+            enablesFor="*"
+            id="addtask"
+            label="Add &amp;Task..."
+            menubarPath="additions">
+      </action>
+      <action
+            class="org.eclipse.ui.texteditor.BookmarkRulerAction"
+            enablesFor="*"
+            id="addbookmark"
+            label="Add Boo&amp;kmark..."
+            menubarPath="additions">
+      </action>
+   </viewerContribution>
+</extension>
+
+<extension
+      point="org.eclipse.ui.editorActions">
+   <editorContribution
+         id="dLabPro Plugin.ZoomContribution"
+         targetID="dLabPro.VisEditor">
+      <action
+            class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.ZoomInAction"
+            icon="icons/etool16/zoom_in_edit.gif"
+            id="dLabPro Plugin.ZoomInAction"
+            label="dLabPro Plugin.ZoomInAction"
+            style="push"
+            toolbarPath="Normal/additions"/>
+      <action
+            class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.ZoomOutAction"
+            icon="icons/etool16/zoom_out_edit.gif"
+            id="dLabPro Plugin.ZoomOutAction"
+            label="dLabPro Plugin.ZoomOutAction"
+            style="push"
+            toolbarPath="Normal/additions"/>
+   </editorContribution>
+   <editorContribution
+         id="dLabPro Plugin.TempDisplaySwitches"
+         targetID="dLabPro.VisEditor">
+      <action
+            actionID="dLabPro Plugin.autorefresh"
+            class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.AutoRefreshAction"
+            icon="icons/etool16/autorefresh_edit.gif"
+            id="dLabPro Plugin.autorefresh"
+            label="Auto Refresh"
+            style="toggle"
+            toolbarPath="Normal/additions">
+      </action>
+      <action
+            class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.ThreeDAction"
+            icon="icons/etool16/3D_edit.gif"
+            id="dLabPro Plugin.threeD"
+            label="Auto-Layout: 3D-View"
+            style="push"
+            toolbarPath="Normal/additions">
+      </action>
+      <action
+            class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.SpectrogramAction"
+            icon="icons/etool16/spec_edit.gif"
+            id="dLabPro Plugin.spectrogram"
+            label="Auto-Layout: Spectrogram"
+            style="push"
+            toolbarPath="Normal/additions"/>
+      <action
+            class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.BarDiagramAction"
+            icon="icons/etool16/bard_edit.gif"
+            id="dLabPro Plugin.bardiagram"
+            label="Auto-Layout: Bar Diagrams"
+            style="push"
+            toolbarPath="Normal/additions"/>
+      <action
+            class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.OscillogramAction"
+            icon="icons/etool16/osci_edit.gif"
+            id="dLabPro Plugin.oscillogram"
+            label="Auto-Layout: Oscillograms"
+            style="push"
+            toolbarPath="Normal/additions"/>
+      <action
+            class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.ResetAction"
+            icon="icons/etool16/reset_edit.gif"
+            id="dLabPro Plugin.reset"
+            label="Reset Display"
+            style="push"
+            toolbarPath="Normal/additions">
+      </action>
+      <action
+            class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.PlayAction"
+            disabledIcon="icons/dtool16/play_edit.gif"
+            icon="icons/etool16/play_edit.gif"
+            id="dLabPro Plugin.play"
+            label="Play"
+            style="push"
+            toolbarPath="Normal/additions"/>
+   </editorContribution>
+</extension>
+
+<extension
+      point="org.eclipse.debug.ui.consoleLineTrackers">
+   <consoleLineTracker
+         class="de.tudresden.ias.eclipse.dlabpro.launch.DLabProConsoleLineTracker"
+         id="de.tudresden.ias.eclipse.dlabpro.console.DLabProConsoleLineTracker"
+         processType="DLabProRunProcess"/>
+</extension>
+<extension
+      point="org.eclipse.ui.views">
+   <view
+         allowMultiple="false"
+         category="dLabPro Plugin.view.category"
+         class="de.tudresden.ias.eclipse.dlabpro.views.ManualContentView"
+         icon="icons/eview16/dlabprodoc_view.gif"
+         id="de.tudresden.ias.eclipse.dlabpro.manualcontentview"
+         name="UASR/dLabPro Manual"/>
+   <view
+         allowMultiple="false"
+         category="dLabPro Plugin.view.category"
+         class="de.tudresden.ias.eclipse.dlabpro.views.UASRManualTocView"
+         icon="icons/eview16/uasrdoc_view.gif"
+         id="de.tudresden.ias.eclipse.dlabpro.uasrmanualtocview"
+         name="UASR Docs"/>
+   <view
+         allowMultiple="false"
+         category="dLabPro Plugin.view.category"
+         class="de.tudresden.ias.eclipse.dlabpro.editors.vis.infoview.DisplayInformationView"
+         icon="icons/eview16/display_view.gif"
+         id="dLabPro Plugin.display.information"
+         name="Display Information"/>
+   <category
+         id="dLabPro Plugin.view.category"
+         name="dLabPro"/>
+</extension>
+<extension
+      point="org.eclipse.ui.perspectives">
+   <perspective
+         class="de.tudresden.ias.eclipse.dlabpro.perspectives.DLabProPerspective"
+         icon="icons/eview16/dlabpro_pers.gif"
+         id="de.tudresden.ias.eclipse.dlabpro.dlabproperspective"
+         name="dLabPro / UASR"/>
+</extension>
+<extension
+      point="org.eclipse.ui.viewActions">
+      <viewContribution
+         id="org.eclipse.ui.console.ConsoleView"
+         targetID="org.eclipse.ui.console.ConsoleView">
+         <action
+               class="de.tudresden.ias.eclipse.dlabpro.actions.console.ReuseConsoleViewActionDelegate"
+               enablesFor="*"
+               icon="icons/elcl16/reuse_co.gif"
+               id="de.tudresden.ias.eclipse.dlabpro.run.actions.common.ReuseConsoleViewActionDelegate"
+               label="Recycle Console"
+               style="toggle"
+               toolbarPath="outputGroup"
+               tooltip="Recycle the dLabPro Console"/>
+         <action
+               class="de.tudresden.ias.eclipse.dlabpro.actions.console.BreakConsoleViewActionDelegate"
+               enablesFor="*"
+               icon="icons/elcl16/break_co.gif"
+               id="dLabPro Plugin.BreakConsoleViewAction"
+               label="Break"
+               style="push">
+         </action>
+         <action
+               class="de.tudresden.ias.eclipse.dlabpro.actions.console.StepConsoleViewActionDelegate"
+               enablesFor="*"
+               icon="icons/elcl16/step_co.gif"
+               id="dLabPro Plugin.StepConsoleViewAction"
+               label="Step"
+               style="push">
+         </action>
+         <action
+               class="de.tudresden.ias.eclipse.dlabpro.actions.console.ContConsoleViewActionDelegate"
+               enablesFor="*"
+               icon="icons/elcl16/cont_co.gif"
+               id="dLabPro Plugin.ContConsoleViewAction"
+               label="Continue"
+               style="push">
+         </action>
+            </viewContribution>
+      </extension>
+<extension
+      point="org.eclipse.ui.perspectiveExtensions">
+   <perspectiveExtension targetID="de.tudresden.ias.eclipse.dlabpro.dlabproperspective">
+      <viewShortcut id="dLabPro Plugin.display.information"/>
+   </perspectiveExtension>
+   <perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
+   	  <viewShortcut id="dLabPro Plugin.display.information"/>
+   </perspectiveExtension>
+</extension>
+
+   <extension point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="dLabPro"
+            visible="true"
+            id="de.tudresden.ias.eclipse.dlabpro.dLabProRunActionSet">
+         <menu
+               label="Run"
+               path="additions"
+               id="org.eclipse.ui.run">
+            <separator
+                  name="dLabProGroup">
+            </separator>
+         </menu>
+         <action
+               class="de.tudresden.ias.eclipse.dlabpro.actions.RunDlabProActionDelegate"
+               enablesFor="*"
+               icon="icons/etool16/run_dLabPro.gif"
+               id="de.tudresden.ias.eclipse.dlabpro.dLabProRunAction"
+               label="dLabPro"
+               menubarPath="org.eclipse.ui.run/dLabProGroup"
+               style="push"
+               toolbarPath="org.eclipse.debug.ui.launchActionSet/run"
+               tooltip="Run dLabPro">
+         </action>
+      </actionSet>
+   </extension>
+
+   <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            class="de.tudresden.ias.eclipse.dlabpro.launch.XtpLaunchShortcut"
+            description="Run the current selection in the dLabPro interpreter"
+            icon="icons/eview16/dlabpro_pers.gif"
+            id="dLabPro Plugin.XtpLaunchShortcut"
+            label="dLabPro Script"
+            modes="run">
+         <contextualLaunch>
+           <enablement>
+             <with variable="selection">
+               <count value="1"/>
+               <iterate>
+                 <or>
+                   <test property="org.eclipse.debug.ui.matchesPattern" value="*.xtp"/>
+                   <test property="org.eclipse.debug.ui.matchesPattern" value="*.itp"/>
+                   <instanceof value="de.tudresden.ias.eclipse.dlabpro.editors.itp.ITPEditor"/>
+                 </or>
+               </iterate>
+             </with>
+           </enablement>
+         </contextualLaunch>
+      </shortcut>
+      <shortcut
+            class="de.tudresden.ias.eclipse.dlabpro.launch.DefLaunchShortcut"
+            description="Run the current selection in the code generator for dLabPro"
+            icon="icons/obj16/cgen.gif"
+            id="dLabPro Plugin.DefLaunchShortcut"
+            label="dLabPro Class Definition Script"
+            modes="run">
+         <contextualLaunch>
+           <enablement>
+             <with variable="selection">
+               <count value="1"/>
+               <iterate>
+                 <or>
+                   <test property="org.eclipse.debug.ui.matchesPattern" value="*.def"/>
+                   <instanceof value="de.tudresden.ias.eclipse.dlabpro.editors.def.DEFEditor"/>
+                 </or>
+               </iterate>
+             </with>
+           </enablement>
+         </contextualLaunch>
+      </shortcut>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="de.tudresden.ias.eclipse.dlabpro.properties.XtpPropertyPage"
+            id="de.tudresden.ias.eclipse.dlabpro.properties.XtpPropertyPage"
+            name="dLabPro Script"
+            nameFilter="*.xtp">
+         <enabledWhen>
+            <instanceof
+                  value="org.eclipse.core.resources.IFile">
+            </instanceof>
+         </enabledWhen>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="de.tudresden.ias.eclipse.dlabpro.properties.XtpPropertyPage"
+            id="de.tudresden.ias.eclipse.dlabpro.properties.ItpPropertyPage"
+            name="dLabPro Script"
+            nameFilter="*.itp">
+         <enabledWhen>
+            <instanceof
+                  value="org.eclipse.core.resources.IFile">
+            </instanceof>
+         </enabledWhen>
+      </page>
+   </extension>
+
+</plugin>

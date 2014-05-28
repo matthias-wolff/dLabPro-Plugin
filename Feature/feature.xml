@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="dLabProPluginFeature"
+      label="dLabPro Editors and Data Displays"
+      version="1.2.2.201307251105"
+      provider-name="TU Dresden, BTU Cottbus">
+
+   <description>
+      dLabPro script editors and data displays.
+   </description>
+
+   <copyright>
+      Copyright 2013 TU Dresden, IAS and BTU Cottbus, chair of Communications engineering.
+   </copyright>
+
+   <license url="">
+      This plug-in is free.
+   </license>
+
+   <url>
+      <update label="dLabPro Update Sites" url="https://www-docs.tu-cottbus.de/kommunikationstechnik/public/updatesite"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.ui.console"/>
+      <import plugin="org.eclipse.debug.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.ui.forms"/>
+      <import plugin="org.eclipse.core.resources"/>
+   </requires>
+
+   <plugin
+         id="de.tudresden.ias.eclipse.dlabpro"
+         download-size="3500"
+         install-size="3500"
+         version="1.2.2"/>
+
+</feature>

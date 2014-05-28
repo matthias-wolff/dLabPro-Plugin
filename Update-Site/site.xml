@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/dLabProPluginFeature_1.2.2.201307251105.jar" id="dLabProPluginFeature" version="1.2.2.201307251105">
+      <category name="dLabProPlugin"/>
+   </feature>
+   <category-def name="dLabProPlugin" label="dLabPro Plugin"/>
+</site>
