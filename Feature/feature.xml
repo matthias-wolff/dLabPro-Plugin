@@ -2,8 +2,9 @@
 <feature
       id="dLabProPluginFeature"
       label="dLabPro Editors and Data Displays"
-      version="1.2.2.201408171826"
-      provider-name="TU Dresden, BTU Cottbus">
+      version="1.2.2.201408171843"
+      provider-name="TU Dresden, BTU Cottbus"
+      plugin="de.tudresden.ias.eclipse.dlabpro">
 
    <description>
       dLabPro script editors and data displays.

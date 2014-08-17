@@ -7,7 +7,7 @@
          class="de.tudresden.ias.eclipse.dlabpro.editors.itp.ITPEditor"
          icon="icons/obj16/itp_file_obj.gif"
          contributorClass="de.tudresden.ias.eclipse.dlabpro.editors.itp.ITPContributor"
-         name="dLabPro Script Editor"
+         name="%editor.name"
          id="de.tudresden.ias.eclipse.dlabpro.editors.itp.itpeditor"
          extensions="itp,xtp">
    </editor>
@@ -15,7 +15,7 @@
          class="de.tudresden.ias.eclipse.dlabpro.editors.def.DEFEditor"
          icon="icons/obj16/def_file_obj.gif"
          contributorClass="de.tudresden.ias.eclipse.dlabpro.editors.def.DEFContributor"
-         name="dLabPro Class Definition File Editor"
+         name="%editor.name.0"
          id="de.tudresden.ias.eclipse.dlabpro.editors.def.defeditor"
          extensions="def">
    </editor>
@@ -24,7 +24,7 @@
             extensions="dn3, wav, xml, data.xml"
             icon="icons/obj16/vised_file_obj.gif"
             id="dLabPro.VisEditor"
-            name="dLabPro Data Display"/>
+            name="%editor.name.1"/>
 </extension>
    
 
@@ -33,35 +33,35 @@
       <page
             class="de.tudresden.ias.eclipse.dlabpro.preferences.GeneralPreferencePage"
             id="de.tudresden.ias.eclipse.dlabpro.preferences.GeneralPreferencePage"
-            name="dLabPro / UASR">
+            name="%page.name">
       </page>
       <page
             category="de.tudresden.ias.eclipse.dlabpro.preferences.GeneralPreferencePage"
             class="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptEditorsPreferencePage"
             id="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptEditorsPreferencePage"
-            name="Script Editors">
+            name="%page.name.0">
       </page>
       <page
             category="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptEditorsPreferencePage"
             class="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptFoldingPreferencePage"
             id="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptFoldingPreferencePage"
-            name="Folding">
+            name="%page.name.1">
       </page>
       <page
             class="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptColoringPreferencePage"
-            name="Syntax Coloring"
+            name="%page.name.2"
             id="de.tudresden.ias.eclipse.dlabpro.preferences.ColorPreferencePage"
             category="de.tudresden.ias.eclipse.dlabpro.preferences.ScriptEditorsPreferencePage"/>
       <page
             category="de.tudresden.ias.eclipse.dlabpro.preferences.GeneralPreferencePage"
             class="de.tudresden.ias.eclipse.dlabpro.preferences.ProgramsPreferencePage"
             id="de.tudresden.ias.eclipse.dlabpro.preferences.ProgramsPreferencePage"
-            name="Programs"/>
+            name="%page.name.3"/>
       <page
             category="de.tudresden.ias.eclipse.dlabpro.preferences.GeneralPreferencePage"
             class="de.tudresden.ias.eclipse.dlabpro.editors.vis.preferences.VisEditorPreferencePage"
             id="dLabPro Plugin.VisEditorPreferences"
-            name="Data Displays"/>
+            name="%page.name.4"/>
    </extension>
    <extension
          point="org.eclipse.core.runtime.preferences">
@@ -72,7 +72,7 @@
          point="org.eclipse.debug.core.launchConfigurationTypes">
       <launchConfigurationType
             delegate="de.tudresden.ias.eclipse.dlabpro.launch.DLabProLaunchConfigurationDelegate"
-            name="dLabPro Script"
+            name="%launchConfigurationType.name"
             modes="run"
             id="de.tudresden.ias.eclipse.dlabpro.run.launch.itp.itplaunchconfigurationtype"/>
    </extension>
@@ -105,7 +105,7 @@
             class="de.tudresden.ias.eclipse.dlabpro.actions.editor.ToggleCommentAction"
             icon="icons/etool16/comment_edit.gif"
             id="de.tudresden.ias.eclipse.dlabpro.run.actions.def.deftogglecommentaction"
-            label="Toggle Comment"
+            label="%action.label"
             menubarPath="additions"/>
    </viewerContribution>
    <viewerContribution
@@ -115,7 +115,7 @@
             class="de.tudresden.ias.eclipse.dlabpro.actions.editor.ToggleCommentAction"
             icon="icons/etool16/comment_edit.gif"
             id="de.tudresden.ias.eclipse.dlabpro.run.actions.itp.itptogglecommentaction"
-            label="Toggle Comment"
+            label="%action.label.0"
             menubarPath="additions"/>
    </viewerContribution>
    <viewerContribution
@@ -123,7 +123,7 @@
          targetID="#DLabProRulerContext">
       <menu
             id="dLabPro_Plugin.FoldingMenu"
-            label="F&amp;olding"
+            label="%menu.label"
             path="additions">
          <separator
                name="Group">
@@ -132,34 +132,34 @@
       <action
             class="de.tudresden.ias.eclipse.dlabpro.actions.editor.FoldingResetAction"
             id="dLabPro Plugin.FoldingResetAction"
-            label="&amp;Reset Structure"
+            label="%action.label.1"
             menubarPath="dLabPro_Plugin.FoldingMenu/Group">
       </action>
       <action
             class="de.tudresden.ias.eclipse.dlabpro.actions.editor.FoldingCollapseAllAction"
             enablesFor="*"
             id="dLabPro Plugin.FoldingCollapseAllAction"
-            label="Collapse A&amp;ll"
+            label="%action.label.2"
             menubarPath="dLabPro_Plugin.FoldingMenu/Group">
       </action>
       <action
             class="de.tudresden.ias.eclipse.dlabpro.actions.editor.FoldingExpandAllAction"
             id="dLabPro Plugin.FoldingCollapseAllAction"
-            label="Expand &amp;All"
+            label="%action.label.3"
             menubarPath="dLabPro_Plugin.FoldingMenu/Group">
       </action>
       <action
             class="org.eclipse.ui.texteditor.TaskRulerAction"
             enablesFor="*"
             id="addtask"
-            label="Add &amp;Task..."
+            label="%action.label.4"
             menubarPath="additions">
       </action>
       <action
             class="org.eclipse.ui.texteditor.BookmarkRulerAction"
             enablesFor="*"
             id="addbookmark"
-            label="Add Boo&amp;kmark..."
+            label="%action.label.5"
             menubarPath="additions">
       </action>
    </viewerContribution>
@@ -174,14 +174,14 @@
             class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.ZoomInAction"
             icon="icons/etool16/zoom_in_edit.gif"
             id="dLabPro Plugin.ZoomInAction"
-            label="dLabPro Plugin.ZoomInAction"
+            label="%action.label.6"
             style="push"
             toolbarPath="Normal/additions"/>
       <action
             class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.ZoomOutAction"
             icon="icons/etool16/zoom_out_edit.gif"
             id="dLabPro Plugin.ZoomOutAction"
-            label="dLabPro Plugin.ZoomOutAction"
+            label="%action.label.7"
             style="push"
             toolbarPath="Normal/additions"/>
    </editorContribution>
@@ -193,7 +193,7 @@
             class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.AutoRefreshAction"
             icon="icons/etool16/autorefresh_edit.gif"
             id="dLabPro Plugin.autorefresh"
-            label="Auto Refresh"
+            label="%action.label.8"
             style="toggle"
             toolbarPath="Normal/additions">
       </action>
@@ -201,7 +201,7 @@
             class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.ThreeDAction"
             icon="icons/etool16/3D_edit.gif"
             id="dLabPro Plugin.threeD"
-            label="Auto-Layout: 3D-View"
+            label="%action.label.9"
             style="push"
             toolbarPath="Normal/additions">
       </action>
@@ -209,28 +209,28 @@
             class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.SpectrogramAction"
             icon="icons/etool16/spec_edit.gif"
             id="dLabPro Plugin.spectrogram"
-            label="Auto-Layout: Spectrogram"
+            label="%action.label.10"
             style="push"
             toolbarPath="Normal/additions"/>
       <action
             class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.BarDiagramAction"
             icon="icons/etool16/bard_edit.gif"
             id="dLabPro Plugin.bardiagram"
-            label="Auto-Layout: Bar Diagrams"
+            label="%action.label.11"
             style="push"
             toolbarPath="Normal/additions"/>
       <action
             class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.OscillogramAction"
             icon="icons/etool16/osci_edit.gif"
             id="dLabPro Plugin.oscillogram"
-            label="Auto-Layout: Oscillograms"
+            label="%action.label.12"
             style="push"
             toolbarPath="Normal/additions"/>
       <action
             class="de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.ResetAction"
             icon="icons/etool16/reset_edit.gif"
             id="dLabPro Plugin.reset"
-            label="Reset Display"
+            label="%action.label.13"
             style="push"
             toolbarPath="Normal/additions">
       </action>
@@ -239,7 +239,7 @@
             disabledIcon="icons/dtool16/play_edit.gif"
             icon="icons/etool16/play_edit.gif"
             id="dLabPro Plugin.play"
-            label="Play"
+            label="%action.label.14"
             style="push"
             toolbarPath="Normal/additions"/>
    </editorContribution>
@@ -260,24 +260,24 @@
          class="de.tudresden.ias.eclipse.dlabpro.views.ManualContentView"
          icon="icons/eview16/dlabprodoc_view.gif"
          id="de.tudresden.ias.eclipse.dlabpro.manualcontentview"
-         name="UASR/dLabPro Manual"/>
+         name="%view.name"/>
    <view
          allowMultiple="false"
          category="dLabPro Plugin.view.category"
          class="de.tudresden.ias.eclipse.dlabpro.views.UASRManualTocView"
          icon="icons/eview16/uasrdoc_view.gif"
          id="de.tudresden.ias.eclipse.dlabpro.uasrmanualtocview"
-         name="UASR Docs"/>
+         name="%view.name.0"/>
    <view
          allowMultiple="false"
          category="dLabPro Plugin.view.category"
          class="de.tudresden.ias.eclipse.dlabpro.editors.vis.infoview.DisplayInformationView"
          icon="icons/eview16/display_view.gif"
          id="dLabPro Plugin.display.information"
-         name="Display Information"/>
+         name="%view.name.1"/>
    <category
          id="dLabPro Plugin.view.category"
-         name="dLabPro"/>
+         name="%category.name"/>
 </extension>
 <extension
       point="org.eclipse.ui.perspectives">
@@ -285,7 +285,7 @@
          class="de.tudresden.ias.eclipse.dlabpro.perspectives.DLabProPerspective"
          icon="icons/eview16/dlabpro_pers.gif"
          id="de.tudresden.ias.eclipse.dlabpro.dlabproperspective"
-         name="dLabPro / UASR"/>
+         name="%perspective.name"/>
 </extension>
 <extension
       point="org.eclipse.ui.viewActions">
@@ -297,16 +297,16 @@
                enablesFor="*"
                icon="icons/elcl16/reuse_co.gif"
                id="de.tudresden.ias.eclipse.dlabpro.run.actions.common.ReuseConsoleViewActionDelegate"
-               label="Recycle Console"
+               label="%action.label.15"
                style="toggle"
                toolbarPath="outputGroup"
-               tooltip="Recycle the dLabPro Console"/>
+               tooltip="%action.tooltip"/>
          <action
                class="de.tudresden.ias.eclipse.dlabpro.actions.console.BreakConsoleViewActionDelegate"
                enablesFor="*"
                icon="icons/elcl16/break_co.gif"
                id="dLabPro Plugin.BreakConsoleViewAction"
-               label="Break"
+               label="%action.label.16"
                style="push">
          </action>
          <action
@@ -314,7 +314,7 @@
                enablesFor="*"
                icon="icons/elcl16/step_co.gif"
                id="dLabPro Plugin.StepConsoleViewAction"
-               label="Step"
+               label="%action.label.17"
                style="push">
          </action>
          <action
@@ -322,7 +322,7 @@
                enablesFor="*"
                icon="icons/elcl16/cont_co.gif"
                id="dLabPro Plugin.ContConsoleViewAction"
-               label="Continue"
+               label="%action.label.18"
                style="push">
          </action>
             </viewContribution>
@@ -339,11 +339,11 @@
 
    <extension point="org.eclipse.ui.actionSets">
       <actionSet
-            label="dLabPro"
+            label="%actionSet.label"
             visible="true"
             id="de.tudresden.ias.eclipse.dlabpro.dLabProRunActionSet">
          <menu
-               label="Run"
+               label="%menu.label.0"
                path="additions"
                id="org.eclipse.ui.run">
             <separator
@@ -355,11 +355,11 @@
                enablesFor="*"
                icon="icons/etool16/run_dLabPro.gif"
                id="de.tudresden.ias.eclipse.dlabpro.dLabProRunAction"
-               label="dLabPro"
+               label="%action.label.19"
                menubarPath="org.eclipse.ui.run/dLabProGroup"
                style="push"
                toolbarPath="org.eclipse.debug.ui.launchActionSet/run"
-               tooltip="Run dLabPro">
+               tooltip="%action.tooltip.0">
          </action>
       </actionSet>
    </extension>
@@ -368,10 +368,10 @@
          point="org.eclipse.debug.ui.launchShortcuts">
       <shortcut
             class="de.tudresden.ias.eclipse.dlabpro.launch.XtpLaunchShortcut"
-            description="Run the current selection in the dLabPro interpreter"
+            description="%shortcut.description"
             icon="icons/eview16/dlabpro_pers.gif"
             id="dLabPro Plugin.XtpLaunchShortcut"
-            label="dLabPro Script"
+            label="%shortcut.label"
             modes="run">
          <contextualLaunch>
            <enablement>
@@ -390,10 +390,10 @@
       </shortcut>
       <shortcut
             class="de.tudresden.ias.eclipse.dlabpro.launch.DefLaunchShortcut"
-            description="Run the current selection in the code generator for dLabPro"
+            description="%shortcut.description.0"
             icon="icons/obj16/cgen.gif"
             id="dLabPro Plugin.DefLaunchShortcut"
-            label="dLabPro Class Definition Script"
+            label="%shortcut.label.0"
             modes="run">
          <contextualLaunch>
            <enablement>
@@ -416,7 +416,7 @@
       <page
             class="de.tudresden.ias.eclipse.dlabpro.properties.XtpPropertyPage"
             id="de.tudresden.ias.eclipse.dlabpro.properties.XtpPropertyPage"
-            name="dLabPro Script"
+            name="%page.name.5"
             nameFilter="*.xtp">
          <enabledWhen>
             <instanceof
@@ -430,7 +430,7 @@
       <page
             class="de.tudresden.ias.eclipse.dlabpro.properties.XtpPropertyPage"
             id="de.tudresden.ias.eclipse.dlabpro.properties.ItpPropertyPage"
-            name="dLabPro Script"
+            name="%page.name.6"
             nameFilter="*.itp">
          <enabledWhen>
             <instanceof
