@@ -2,7 +2,7 @@
 <feature
       id="dLabProPluginFeature"
       label="dLabPro Editors and Data Displays"
-      version="1.2.2.201307251105"
+      version="1.2.2.201408171826"
       provider-name="TU Dresden, BTU Cottbus">
 
    <description>
@@ -32,13 +32,12 @@
       <import plugin="org.eclipse.debug.ui"/>
       <import plugin="org.eclipse.ui.ide"/>
       <import plugin="org.eclipse.ui.forms"/>
-      <import plugin="org.eclipse.core.resources"/>
    </requires>
 
    <plugin
          id="de.tudresden.ias.eclipse.dlabpro"
-         download-size="3500"
-         install-size="3500"
-         version="1.2.2"/>
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
 </feature>

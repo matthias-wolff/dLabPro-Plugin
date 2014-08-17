@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/dLabProPluginFeature_1.2.2.201307251105.jar" id="dLabProPluginFeature" version="1.2.2.201307251105">
+   <description name="dLabPro Update Site" url="https://www-docs.tu-cottbus.de/kommunikationstechnik/public/updatesite">
+      The dLabPro plug-in update site
+   </description>
+   <feature url="features/dLabProPluginFeature_1.2.2.201408171826.jar" id="dLabProPluginFeature" version="1.2.2.201408171826">
       <category name="dLabProPlugin"/>
    </feature>
    <category-def name="dLabProPlugin" label="dLabPro Plugin"/>
