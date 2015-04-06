@@ -1,7 +1,7 @@
 
 package de.tudresden.ias.eclipse.dlabpro.editors.vis.editor;
 
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.data.DataCompInfo;
+import de.tucottbus.kt.jlab.datadisplays.data.DataCompInfo;
 
 /**
  * Fired when the VisEditor has changed the data or layout (grouping, visibility or display types) other than as a

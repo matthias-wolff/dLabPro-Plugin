@@ -16,8 +16,9 @@ import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.eclipse.ui.part.ViewPart;
 
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.components.displays.events.DisplayInfoMouseMoveEvent;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.components.displays.events.DisplayInfoScrollEvent;
+import de.tucottbus.kt.jlab.datadisplays.events.DisplayInfoMouseMoveEvent;
+import de.tucottbus.kt.jlab.datadisplays.events.DisplayInfoScrollEvent;
+import de.tucottbus.kt.jlab.datadisplays.interfaces.IDisplayInfoListener;
 import de.tudresden.ias.eclipse.dlabpro.editors.vis.editor.VisEditor;
 
 /**

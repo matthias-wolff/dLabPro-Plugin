@@ -13,6 +13,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.osgi.framework.Bundle;
 
+import de.tucottbus.kt.jlab.datadisplays.utils.DdUtils;
 import de.tudresden.ias.eclipse.dlabpro.DLabProPlugin;
 import de.tudresden.ias.eclipse.dlabpro.utils.LaunchUtil;
 
@@ -185,7 +186,7 @@ public class X2XmlConverter implements IRunnableWithProgress
       System.out.println("\nX2XML converter log:\n"+sLog+"\n");
       throw new Error();
     }
-    VIS.MSG(sLog);
+    DdUtils.MSG(sLog);
   }
 
 }

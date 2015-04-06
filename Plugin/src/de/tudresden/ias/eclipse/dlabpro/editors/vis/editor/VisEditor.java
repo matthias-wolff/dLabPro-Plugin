@@ -39,23 +39,24 @@ import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.xml.sax.SAXException;
 
+import de.tucottbus.kt.jlab.datadisplays.data.DataCompInfo;
+import de.tucottbus.kt.jlab.datadisplays.data.DataException;
+import de.tucottbus.kt.jlab.datadisplays.events.DisplayEvent;
+import de.tucottbus.kt.jlab.datadisplays.events.HdetailEvent;
+import de.tucottbus.kt.jlab.datadisplays.events.IDisplayEventListener;
+import de.tucottbus.kt.jlab.datadisplays.interfaces.Playable;
+import de.tucottbus.kt.jlab.datadisplays.utils.DdUtils;
+import de.tucottbus.kt.jlab.datadisplays.utils.PlayActionUtil;
+import de.tucottbus.kt.jlab.kernel.JlData;
+import de.tucottbus.kt.jlab.kernel.JlDataFile;
 import de.tudresden.ias.eclipse.dlabpro.DLabProPlugin;
 import de.tudresden.ias.eclipse.dlabpro.editors.vis.VIS;
 import de.tudresden.ias.eclipse.dlabpro.editors.vis.X2XmlConverter;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.actions.PlayAction;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.components.ComponentPanel;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.components.Playable;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.components.displays.events.DisplayEvent;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.components.displays.events.HdetailEvent;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.components.displays.events.IDisplayEventListener;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.data.DataCompInfo;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.data.DataException;
 import de.tudresden.ias.eclipse.dlabpro.editors.vis.infoview.DisplayInformationView;
 import de.tudresden.ias.eclipse.dlabpro.editors.vis.outline.IOutlinePageListener;
 import de.tudresden.ias.eclipse.dlabpro.editors.vis.outline.OutlineEvent;
 import de.tudresden.ias.eclipse.dlabpro.editors.vis.outline.VisOutlinePage;
-import de.tudresden.ias.jlab.kernel.JlData;
-import de.tudresden.ias.jlab.kernel.JlDataFile;
+import de.tudresden.ias.eclipse.dlabpro.editors.vis.widgets.VisDataDisplay;
 
 /**
  * the main class of the VisEditor in the dLabPro-Plugin. This class extends the workbench to create a new editor.
@@ -71,7 +72,7 @@ public class VisEditor extends EditorPart implements IOutlinePageListener,
   private String         mFilePath;
   private JlData         midDocument;
   private Composite      mParent;
-  private ComponentPanel mPanel;
+  private VisDataDisplay mPanel;
   private Action         mRefreshHandler;
   private Action         mPrintHandler;
 
@@ -184,12 +185,12 @@ public class VisEditor extends EditorPart implements IOutlinePageListener,
 
   private final void createComponentPanel(Exception e)
   {
-    mPanel = new ComponentPanel(mParent,e);
+    mPanel = new VisDataDisplay(mParent,e);
   }
 
   private final void createComponentPanel(JlData iData, String sProps)
   {
-    mPanel = new ComponentPanel(mParent,iData,sProps);
+    mPanel = new VisDataDisplay(mParent,iData,sProps);
     mPanel.addDisplayEventListener(this);
 
     // Read persistent record detail
@@ -382,7 +383,7 @@ public class VisEditor extends EditorPart implements IOutlinePageListener,
     }
     catch (PartInitException e)
     {
-      VIS.EXCEPTION(e);
+      DdUtils.EXCEPTION(e);
       createComponentPanel(e);
     }
     if (midDocument != null && bTranspose) midDocument = transposeData(midDocument);
@@ -445,7 +446,7 @@ public class VisEditor extends EditorPart implements IOutlinePageListener,
     }
     catch (CoreException e)
     {
-      VIS.EXCEPTION(e);
+      DdUtils.EXCEPTION(e);
     }
   }
 
@@ -484,7 +485,7 @@ public class VisEditor extends EditorPart implements IOutlinePageListener,
     }
     catch (CoreException e)
     {
-      VIS.EXCEPTION(e);
+      DdUtils.EXCEPTION(e);
       return null;
     }
   }
@@ -530,16 +531,16 @@ public class VisEditor extends EditorPart implements IOutlinePageListener,
       DataCompInfo[] aDci = DataCompInfo.createFromData(midDocument,null);
       switch (nLayout)
       {
-      case VIS.CP_STYLE_OSCILLOGRAM:
+      case DdUtils.CP_STYLE_OSCILLOGRAM:
         DataCompInfo.oscillogramLayout(aDci);
         break;
-      case VIS.CP_STYLE_BARDIAGRAM:
+      case DdUtils.CP_STYLE_BARDIAGRAM:
         DataCompInfo.barDiagramLayout(aDci);
         break;
-      case VIS.CP_STYLE_SPECTROGRAM:
+      case DdUtils.CP_STYLE_SPECTROGRAM:
         DataCompInfo.spectrogramLayout(aDci);
         break;
-      case VIS.CP_STYLE_3DVIEW:
+      case DdUtils.CP_STYLE_3DVIEW:
         DataCompInfo.threeDLayout(aDci);
         break;
       default:
@@ -553,7 +554,7 @@ public class VisEditor extends EditorPart implements IOutlinePageListener,
     }
     catch (DataException e)
     {
-      VIS.EXCEPTION(e);
+      DdUtils.EXCEPTION(e);
     }
   }
   
@@ -847,7 +848,7 @@ public class VisEditor extends EditorPart implements IOutlinePageListener,
       Playable iPdd = null;
       if (mPanel != null) iPdd = mPanel.canPlay();
       if (iPdd != null) iPdd.updatePlayAction(action);
-      else PlayAction.setDisabled(action,
+      else PlayActionUtil.setDisabled(action,
           "there are no or too many playable displays");
     }
     catch (Throwable e)
@@ -935,7 +936,7 @@ public class VisEditor extends EditorPart implements IOutlinePageListener,
         long nUnmodifiedSince = System.currentTimeMillis() - f.lastModified();
         if (nUnmodifiedSince < 100)
         {
-          VIS.MSG("Autosync: resource change detected (" + nUnmodifiedSince
+          DdUtils.MSG("Autosync: resource change detected (" + nUnmodifiedSince
               + " ms ago), wait...");
           nCounter = 20;
           continue;
@@ -945,7 +946,7 @@ public class VisEditor extends EditorPart implements IOutlinePageListener,
       {
         // Silently ignore all exceptions
       }
-      VIS.MSG("Autosync: resource change detected, reloading...");
+      DdUtils.MSG("Autosync: resource change detected, reloading...");
       try
       {
         mResource.refreshLocal(IResource.DEPTH_ZERO,null);

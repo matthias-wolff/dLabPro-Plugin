@@ -1,5 +1,7 @@
 package de.tudresden.ias.eclipse.dlabpro.editors.vis;
 
+import de.tucottbus.kt.jlab.datadisplays.utils.DdUtils;
+
 /**
  * Klasse dient zum Formatieren der Beschriftung eines Lineals.
  * 
@@ -78,7 +80,7 @@ public class NumberFormatter {
 			sizeOfNumbers = s.length() - 1;
 		}
 
-		if (sizeOfNumbers > VIS.NUMBER_OF_DIGITS_FOR_WHOLE_NUMBER)
+		if (sizeOfNumbers > DdUtils.NUMBER_OF_DIGITS_FOR_WHOLE_NUMBER)
 			mUseAbriviation = true;
 
 		mFirstLabelSent = true;
@@ -172,14 +174,14 @@ public class NumberFormatter {
 		s = getRidOfLastZeroes(s);
 
 		if (mUseAbriviation
-				&& s.length() > VIS.NUMBER_OF_DIGITS_FOR_WHOLE_NUMBER) {
+				&& s.length() > DdUtils.NUMBER_OF_DIGITS_FOR_WHOLE_NUMBER) {
 			s = ".." + s.substring(s.length() - 4);
 		}
 
 		mOldValue = value;
 		mUseOldValue = true;
 
-		if (sizeOfNumbers > VIS.NUMBER_OF_DIGITS_FOR_WHOLE_NUMBER)
+		if (sizeOfNumbers > DdUtils.NUMBER_OF_DIGITS_FOR_WHOLE_NUMBER)
 			mUseAbriviation = true;
 
 		return s;
@@ -246,8 +248,8 @@ public class NumberFormatter {
 		;
 
 		if (magLowVal > magHighVal) {
-			if (magLowVal <= VIS.EXPONENT_FOR_SCIENTIFIC_NOTATION_LOW
-					|| magLowVal >= VIS.EXPONENT_FOR_SCIENTIFIC_NOTATION_HIGH) {
+			if (magLowVal <= DdUtils.EXPONENT_FOR_SCIENTIFIC_NOTATION_LOW
+					|| magLowVal >= DdUtils.EXPONENT_FOR_SCIENTIFIC_NOTATION_HIGH) {
 				mLowVal = switchToSN(magLowVal, mLowVal);
 				mHighVal = switchToSN(magLowVal, mHighVal);
 				mSecondLabelValue = switchToSN(magLowVal, mSecondLabelValue);
@@ -258,8 +260,8 @@ public class NumberFormatter {
 				mScientificNotationExponent = magLowVal;
 			}
 		} else {
-			if (magHighVal <= VIS.EXPONENT_FOR_SCIENTIFIC_NOTATION_LOW
-					|| magHighVal >= VIS.EXPONENT_FOR_SCIENTIFIC_NOTATION_HIGH) {
+			if (magHighVal <= DdUtils.EXPONENT_FOR_SCIENTIFIC_NOTATION_LOW
+					|| magHighVal >= DdUtils.EXPONENT_FOR_SCIENTIFIC_NOTATION_HIGH) {
 				mLowVal = switchToSN(magHighVal, mLowVal);
 				mHighVal = switchToSN(magHighVal, mHighVal);
 				mSecondLabelValue = switchToSN(magHighVal, mSecondLabelValue);

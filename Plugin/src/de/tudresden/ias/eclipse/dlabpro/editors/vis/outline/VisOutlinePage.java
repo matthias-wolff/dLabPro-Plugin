@@ -42,18 +42,18 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
+import de.tucottbus.kt.jlab.datadisplays.data.DataCompInfo;
+import de.tucottbus.kt.jlab.datadisplays.data.DataException;
+import de.tucottbus.kt.jlab.datadisplays.utils.ColorManager;
+import de.tucottbus.kt.jlab.datadisplays.utils.DdUtils;
+import de.tucottbus.kt.jlab.datadisplays.widgets.displays.BarDiagram;
+import de.tucottbus.kt.jlab.datadisplays.widgets.displays.Oscillogram;
+import de.tucottbus.kt.jlab.datadisplays.widgets.displays.Spectrogram;
+import de.tucottbus.kt.jlab.datadisplays.widgets.displays.ThreeDDisplay;
+import de.tucottbus.kt.jlab.kernel.JlData;
 import de.tudresden.ias.eclipse.dlabpro.DLabProPlugin;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.VIS;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.VisColorManager;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.components.displays.BarDiagram;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.components.displays.Oscillogram;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.components.displays.Spectrogram;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.components.displays.ThreeDDisplay;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.data.DataCompInfo;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.data.DataException;
 import de.tudresden.ias.eclipse.dlabpro.editors.vis.editor.EditorEvent;
 import de.tudresden.ias.eclipse.dlabpro.editors.vis.editor.IEditorListener;
-import de.tudresden.ias.jlab.kernel.JlData;
 
 /**
  * This class displays the outline of a VisEditor in the OutlineView of the workbench as a table. The rows of the tree
@@ -489,7 +489,7 @@ public class VisOutlinePage implements IContentOutlinePage, IEditorListener,
     iSep.setLayoutData(makeFormBarData(iBtn3,5));
 
     m_iMaxVisibleCompsText = m_iFmtk.createText(iPanel,new Integer(
-        VIS.VOP_DEF_VISIBLE_DISPLAYS).toString());
+        DdUtils.VOP_DEF_VISIBLE_DISPLAYS).toString());
     m_iMaxVisibleCompsText.setEditable(true);
     m_iMaxVisibleCompsText.setLayoutData(makeFormBarData(iSep,5));
 
@@ -820,7 +820,7 @@ public class VisOutlinePage implements IContentOutlinePage, IEditorListener,
     if (sDisplayType.endsWith("LabelDisplay" )) return null;
     if (sDisplayType.endsWith("ThreeDDisplay")) return null;
 
-    VisColorManager iCm = new VisColorManager();
+    ColorManager iCm = new ColorManager();
     return iCm.getCompColorIcon(nComp);
   }
 
@@ -839,7 +839,7 @@ public class VisOutlinePage implements IContentOutlinePage, IEditorListener,
 
     public void run()
     {
-      VisColorManager iCm = new VisColorManager();
+      ColorManager iCm = new ColorManager();
       iCm.switchValueColors(-1);
       fireOutlineChangedEvent();
     }
@@ -858,18 +858,18 @@ public class VisOutlinePage implements IContentOutlinePage, IEditorListener,
 
     public void run()
     {
-      if (VIS.bSpecShowValues && VIS.bSpecShowLevels)
+      if (DdUtils.bSpecShowValues && DdUtils.bSpecShowLevels)
       {
-        VIS.bSpecShowValues = false;
+        DdUtils.bSpecShowValues = false;
       }
-      else if (VIS.bSpecShowValues && !VIS.bSpecShowLevels)
+      else if (DdUtils.bSpecShowValues && !DdUtils.bSpecShowLevels)
       {
-        VIS.bSpecShowLevels = true;
+        DdUtils.bSpecShowLevels = true;
       }
-      else if (!VIS.bSpecShowValues && VIS.bSpecShowLevels)
+      else if (!DdUtils.bSpecShowValues && DdUtils.bSpecShowLevels)
       {
-        VIS.bSpecShowValues = true;
-        VIS.bSpecShowLevels = false;
+        DdUtils.bSpecShowValues = true;
+        DdUtils.bSpecShowLevels = false;
       }
       fireOutlineChangedEvent();
     }
@@ -999,7 +999,7 @@ public class VisOutlinePage implements IContentOutlinePage, IEditorListener,
 
     void run(TypedEvent event)
     {
-      VIS.MSG("OsciCompAction.run()");
+      DdUtils.MSG("OsciCompAction.run()");
       setCompDisplayType(Oscillogram.class.getCanonicalName());
     }
 
@@ -1129,7 +1129,7 @@ public class VisOutlinePage implements IContentOutlinePage, IEditorListener,
 
       // Update tree and editor
       fillTree();
-      autoVisibility(AV_LIMIT,VIS.VOP_DEF_VISIBLE_DISPLAYS,false);
+      autoVisibility(AV_LIMIT,DdUtils.VOP_DEF_VISIBLE_DISPLAYS,false);
       fireOutlineChangedEvent();
     }
 
@@ -1139,17 +1139,17 @@ public class VisOutlinePage implements IContentOutlinePage, IEditorListener,
 
   protected void onActivateAll(Widget iWidget)
   {
-    autoVisibility(AV_ALL,VIS.VOP_MAX_VISIBLE_DISPLAYS,true);
+    autoVisibility(AV_ALL,DdUtils.VOP_MAX_VISIBLE_DISPLAYS,true);
   }
 
   protected void onActivateNone(Widget iWidget)
   {
-    autoVisibility(AV_NONE,VIS.VOP_MAX_VISIBLE_DISPLAYS,true);
+    autoVisibility(AV_NONE,DdUtils.VOP_MAX_VISIBLE_DISPLAYS,true);
   }
 
   protected void onActivateSymbolic(Widget iWidget)
   {
-    autoVisibility(AV_SYMBOLIC,VIS.VOP_MAX_VISIBLE_DISPLAYS,true);
+    autoVisibility(AV_SYMBOLIC,DdUtils.VOP_MAX_VISIBLE_DISPLAYS,true);
   }
 
   protected void onActivateNext(Widget iWidget)
@@ -1371,10 +1371,10 @@ public class VisOutlinePage implements IContentOutlinePage, IEditorListener,
     if (nFirstToCheck > aTi.length - nMaxVisible) nFirstToCheck = aTi.length
         - nMaxVisible;
 
-    VIS.MSG("- autoVisibility()");
-    VIS.MSG("  nFirstChecked = " + nFirstChecked);
-    VIS.MSG("  nLastChecked  = " + nLastChecked);
-    VIS.MSG("  nFirstToCheck = " + nFirstToCheck);
+    DdUtils.MSG("- autoVisibility()");
+    DdUtils.MSG("  nFirstChecked = " + nFirstChecked);
+    DdUtils.MSG("  nLastChecked  = " + nLastChecked);
+    DdUtils.MSG("  nFirstToCheck = " + nFirstToCheck);
 
     // Clear some or all checked root items
     if ((nHint & AV_SYMBOLIC) == 0) for (i = 0, nVisible = 0; i < aTi.length; i++)
@@ -1450,14 +1450,14 @@ public class VisOutlinePage implements IContentOutlinePage, IEditorListener,
    */
   private final int getMaxVisibleComps()
   {
-    int nMaxVisibleComps = VIS.VOP_DEF_VISIBLE_DISPLAYS;
+    int nMaxVisibleComps = DdUtils.VOP_DEF_VISIBLE_DISPLAYS;
     try
     {
       nMaxVisibleComps = Integer.parseInt(m_iMaxVisibleCompsText.getText());
     }
     catch (NumberFormatException e)
     {
-      nMaxVisibleComps = VIS.VOP_DEF_VISIBLE_DISPLAYS;
+      nMaxVisibleComps = DdUtils.VOP_DEF_VISIBLE_DISPLAYS;
       m_iMaxVisibleCompsText.setText(new Integer(nMaxVisibleComps).toString());
     }
     if (nMaxVisibleComps < 1)
@@ -1465,9 +1465,9 @@ public class VisOutlinePage implements IContentOutlinePage, IEditorListener,
       nMaxVisibleComps = 1;
       m_iMaxVisibleCompsText.setText(new Integer(nMaxVisibleComps).toString());
     }
-    if (nMaxVisibleComps > VIS.VOP_MAX_VISIBLE_DISPLAYS)
+    if (nMaxVisibleComps > DdUtils.VOP_MAX_VISIBLE_DISPLAYS)
     {
-      nMaxVisibleComps = VIS.VOP_MAX_VISIBLE_DISPLAYS;
+      nMaxVisibleComps = DdUtils.VOP_MAX_VISIBLE_DISPLAYS;
       m_iMaxVisibleCompsText.setText(new Integer(nMaxVisibleComps).toString());
     }
 

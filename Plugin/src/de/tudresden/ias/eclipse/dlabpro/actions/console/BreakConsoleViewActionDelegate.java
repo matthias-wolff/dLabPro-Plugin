@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.jface.action.IAction;
 
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.VIS;
+import de.tucottbus.kt.jlab.datadisplays.utils.DdUtils;
 
 public class BreakConsoleViewActionDelegate extends
     AbstractConsoleViewActionDelegate
@@ -25,7 +25,7 @@ public class BreakConsoleViewActionDelegate extends
     }
     catch (IOException e)
     {
-      VIS.EXCEPTION(e);
+      DdUtils.EXCEPTION(e);
     }
   }
 

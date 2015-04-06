@@ -11,6 +11,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
+import de.tucottbus.kt.jlab.datadisplays.utils.DdUtils;
 import de.tudresden.ias.eclipse.dlabpro.utils.LaunchUtil;
 
 /**
@@ -48,6 +49,9 @@ public class DLabProPlugin extends AbstractUIPlugin
     LaunchUtil.getDlabproExe(true);
     LaunchUtil.getCgenExe(true);
     LaunchUtil.getUasrHome(true);
+
+    // Use the plug-in's preference store for jLab data displays.
+    DdUtils.setPreferenceStore(getPreferenceStore());
   }
 
   /**
@@ -92,6 +96,7 @@ public class DLabProPlugin extends AbstractUIPlugin
 
   /**
    * Determines if running on Linux
+   * @deprecated Use DdUtils.isLinux() instead!
    */
   public static boolean isLinux()
   {
@@ -107,7 +112,7 @@ public class DLabProPlugin extends AbstractUIPlugin
   }
   catch (Exception e)
   {
-    VIS.MSG("loadIconImage hat ne Exception geworfen");
+    DdUtils.MSG("loadIconImage hat ne Exception geworfen");
   }
   return null;*/
   

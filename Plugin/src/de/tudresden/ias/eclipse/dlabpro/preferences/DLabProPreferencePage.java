@@ -2,6 +2,7 @@
 package de.tudresden.ias.eclipse.dlabpro.preferences;
 
 import java.lang.reflect.Constructor;
+
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferencePage;
 import org.eclipse.swt.SWT;

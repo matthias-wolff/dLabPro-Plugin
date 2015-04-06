@@ -16,14 +16,15 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IEditorPart;
 
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.VisColorManager;
+import de.tucottbus.kt.jlab.datadisplays.DdPreferenceConstants;
+import de.tucottbus.kt.jlab.datadisplays.utils.ColorManager;
+import de.tucottbus.kt.jlab.utils.SoundUtil;
 import de.tudresden.ias.eclipse.dlabpro.editors.vis.editor.VisEditor;
 import de.tudresden.ias.eclipse.dlabpro.preferences.DLabProPreferencePage;
-import de.tudresden.ias.eclipse.dlabpro.utils.SoundUtil;
 import de.tudresden.ias.eclipse.dlabpro.utils.WorkbenchUtil;
 
 public class VisEditorPreferencePage extends DLabProPreferencePage implements
-    IVisEditorPreferenceConstants
+    DdPreferenceConstants
 {
 
   Combo  iCompColorTab;
@@ -55,12 +56,12 @@ public class VisEditorPreferencePage extends DLabProPreferencePage implements
     iLab = (Label)createControl(Label.class,iGrp,SWT.NULL,1);
     iLab.setText("Oscillogram / Bar Diagram");
     iCompColorTab = (Combo)createControl(Combo.class,iGrp,SWT.READ_ONLY,1);
-    asColorTables = VisColorManager.getCompColorTables();
+    asColorTables = ColorManager.getCompColorTables();
     for (i=0; i<asColorTables.length; i++) iCompColorTab.add(asColorTables[i]);
     iLab = (Label)createControl(Label.class,iGrp,SWT.NULL,1);
     iLab.setText("Spectrogram / 3D-View");
     iValueColorTab = (Combo)createControl(Combo.class,iGrp,SWT.READ_ONLY,1);
-    asColorTables = VisColorManager.getValueColorTables();
+    asColorTables = ColorManager.getValueColorTables();
     for (i=0; i<asColorTables.length; i++) iValueColorTab.add(asColorTables[i]);
 
     iGrp = (Group)createControl(Group.class,iParent,SWT.NONE,1,2);
@@ -219,7 +220,7 @@ public class VisEditorPreferencePage extends DLabProPreferencePage implements
     iStore.setValue(P_VIS_3DPITCH,nPitch);
     
     // Apply to editors
-    VisColorManager iCm = new VisColorManager();
+    ColorManager iCm = new ColorManager();
     iCm.switchCompColors (iCompColorTab .getSelectionIndex());
     iCm.switchValueColors(iValueColorTab.getSelectionIndex());
     IEditorPart iEditor = WorkbenchUtil.getActiveEditor();

@@ -27,13 +27,13 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 
+import de.tucottbus.kt.jlab.datadisplays.DdPreferenceConstants;
+import de.tucottbus.kt.jlab.datadisplays.utils.DpiConverter;
 import de.tudresden.ias.eclipse.dlabpro.DLabProPlugin;
 import de.tudresden.ias.eclipse.dlabpro.editors.def.model.Comparator;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.components.rulers.DpiConverter;
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.preferences.IVisEditorPreferenceConstants;
 
 public class VisPrintDialog extends TitleAreaDialog implements ModifyListener,
-IVisEditorPreferenceConstants
+DdPreferenceConstants
 {
   private static final String sDefaultMessage = "Data displays are printed as seen on screen.";
   

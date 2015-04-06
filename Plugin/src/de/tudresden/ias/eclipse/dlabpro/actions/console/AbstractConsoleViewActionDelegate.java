@@ -12,7 +12,7 @@ import org.eclipse.ui.console.IConsoleConstants;
 import org.eclipse.ui.console.IConsoleView;
 import org.eclipse.ui.internal.console.ConsoleView;
 
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.VIS;
+import de.tucottbus.kt.jlab.datadisplays.utils.DdUtils;
 import de.tudresden.ias.eclipse.dlabpro.utils.LaunchUtil;
 
 public abstract class AbstractConsoleViewActionDelegate
@@ -52,7 +52,7 @@ implements IViewActionDelegate, IPropertyListener
     }
     catch (Exception e)
     {
-      VIS.EXCEPTION(e);
+      DdUtils.EXCEPTION(e);
     }
   }
 
@@ -80,7 +80,7 @@ implements IViewActionDelegate, IPropertyListener
       }
       catch (Exception e)
       {
-        VIS.EXCEPTION(e);
+        DdUtils.EXCEPTION(e);
       }
   }
 

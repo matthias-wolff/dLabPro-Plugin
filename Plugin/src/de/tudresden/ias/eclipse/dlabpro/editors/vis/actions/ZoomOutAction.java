@@ -3,7 +3,7 @@ package de.tudresden.ias.eclipse.dlabpro.editors.vis.actions;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 
-import de.tudresden.ias.eclipse.dlabpro.editors.vis.VIS;
+import de.tucottbus.kt.jlab.datadisplays.utils.DdUtils;
 
 public class ZoomOutAction extends AbstractVisEditorActionDelegate {
 
@@ -11,7 +11,7 @@ public class ZoomOutAction extends AbstractVisEditorActionDelegate {
 		if (mEditor != null) {
 			mEditor.zoomOut();
 		} else
-			VIS.MSG("Fehler in ZoomOutAction");
+			DdUtils.MSG("Fehler in ZoomOutAction");
 	}
 
 	public void selectionChanged(IAction action, ISelection selection) {
