@@ -2,8 +2,8 @@
 <feature
       id="dLabProPluginFeature"
       label="dLabPro Editors and Data Displays"
-      version="1.2.2.201408171843"
-      provider-name="TU Dresden, BTU Cottbus"
+      version="1.2.2.201504161058"
+      provider-name="BTU Cottbus-Senftenbeg"
       plugin="de.tudresden.ias.eclipse.dlabpro">
 
    <description>
@@ -39,6 +39,6 @@
          id="de.tudresden.ias.eclipse.dlabpro"
          download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="1.2.2"/>
 
 </feature>
