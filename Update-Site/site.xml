@@ -3,7 +3,7 @@
    <description name="dLabPro Update Site" url="https://www-docs.tu-cottbus.de/kommunikationstechnik/public/updatesite">
       The dLabPro plug-in update site
    </description>
-   <feature url="features/dLabProPluginFeature_1.2.2.201504161058.jar" id="dLabProPluginFeature" version="1.2.2.201504161058">
+   <feature url="features/dLabProPluginFeature_1.2.2.201504101841.jar" id="dLabProPluginFeature" version="1.2.2.201504101841">
       <category name="dLabProPlugin"/>
    </feature>
    <category-def name="dLabProPlugin" label="dLabPro Plugin"/>
