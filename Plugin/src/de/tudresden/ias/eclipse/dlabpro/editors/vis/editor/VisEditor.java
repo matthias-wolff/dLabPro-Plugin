@@ -316,49 +316,58 @@ public class VisEditor extends EditorPart implements IOutlinePageListener,
     }
     catch (SAXException e)
     {
-      // Try loading through converter
-      System.out.print("\nFAILED ("+e.toString()+")");
-      System.out.print("\nVisEditor: loading data file trough converter ...");
-      String sFmt = X2XmlConverter.canConvert(filePath);
-      String cnvFilePath = null;
-      if (sFmt == null)
+      // Try loading as audio file
+      if (JlDataFile.isAudioFile(new File(filePath)))
       {
-        System.out.print("\nFAILED");
-        throw new PartInitException("No suitable converter found.");
+        System.out.print("\nFAILED ("+e.toString()+")");
+        System.out.print("\nVisEditor: try loading as audio file ...");
+        midDocument = JlDataFile.readAudioFile(new File(filePath),false);
       }
-      try
+      else
       {
-        TimeTriggeredProgressMonitorDialog iPm = new TimeTriggeredProgressMonitorDialog(
-            PlatformUI.getWorkbench().getDisplay().getActiveShell(),2000);
-        X2XmlConverter iCnvt = new X2XmlConverter(filePath,sFmt);
-        long nStartTime = System.currentTimeMillis();
-        iPm.run(true,true,iCnvt);
-        setAutoRefresh(System.currentTimeMillis() - nStartTime < 2000);
-        cnvFilePath = iCnvt.getConvertedFileName();
-        if (cnvFilePath == null) throw new PartInitException(
-            "Error converting data file. " + "Here is the converter's log:\n\n"
-                + iCnvt.getLog());
-      }
-      catch (Exception e2)
-      {
-        System.out.print("\nFAILED ("+e2.toString()+")");
-        throw new PartInitException("Error converting data file.",e2);
-      }
-
-      // Read (temporary) XML data file
-      if (cnvFilePath!=null)
-      {
+        // Try loading through converter
+        System.out.print("\nVisEditor: loading data file trough converter ...");
+        String sFmt = X2XmlConverter.canConvert(filePath);
+        String cnvFilePath = null;
+        if (sFmt == null)
+        {
+          System.out.print("\nFAILED");
+          throw new PartInitException("No suitable converter found.");
+        }
         try
         {
-          midDocument = JlDataFile.readXml(new File(cnvFilePath),warnings);
+          TimeTriggeredProgressMonitorDialog iPm = new TimeTriggeredProgressMonitorDialog(
+              PlatformUI.getWorkbench().getDisplay().getActiveShell(),2000);
+          X2XmlConverter iCnvt = new X2XmlConverter(filePath,sFmt);
+          long nStartTime = System.currentTimeMillis();
+          iPm.run(true,true,iCnvt);
+          setAutoRefresh(System.currentTimeMillis() - nStartTime < 2000);
+          cnvFilePath = iCnvt.getConvertedFileName();
+          if (cnvFilePath == null) throw new PartInitException(
+              "Error converting data file. " + "Here is the converter's log:\n\n"
+                  + iCnvt.getLog());
         }
         catch (Exception e2)
         {
           System.out.print("\nFAILED ("+e2.toString()+")");
-          throw new PartInitException("Cannot open converted data file.",e2);
+          throw new PartInitException("Error converting data file.",e2);
         }
-        File f = new File(cnvFilePath);
-        f.delete();
+  
+        // Read (temporary) XML data file
+        if (cnvFilePath!=null)
+        {
+          try
+          {
+            midDocument = JlDataFile.readXml(new File(cnvFilePath),warnings);
+          }
+          catch (Exception e2)
+          {
+            System.out.print("\nFAILED ("+e2.toString()+")");
+            throw new PartInitException("Cannot open converted data file.",e2);
+          }
+          File f = new File(cnvFilePath);
+          f.delete();
+        }
       }
     }
     
