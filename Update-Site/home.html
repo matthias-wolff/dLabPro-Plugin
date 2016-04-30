@@ -36,6 +36,23 @@
   if (top==self)
     top.location = "index.html";
 </script>
+<script type="text/javascript">
+  function toggleNode(sNode)
+  {
+    var iDiv = document.getElementById(sNode);
+    var iDivToggle = document.getElementById(sNode+"_toggle");
+    if (iDiv.style.display=="none")
+    {
+      iDiv.style.display = "";
+      iDivToggle.style.display = "none";
+    }
+    else
+    {
+      iDiv.style.display = "none";
+      iDivToggle.style.display = "";
+    }
+  }
+</script>
 <script type="text/javascript" src="default.js"></script>
 <body>
   <a name="DocHome"></a>
@@ -57,7 +74,7 @@
             <h3 style="margin-top:2pt; margin-bottom:2pt">Contents</h3>
             <ul class="linklist">
               <li class="linklist"><a href="#clp_docHome">Plug-in Installation</a></li>
-              <li class="linklist"><a href="#clp_introduction">Introduction</a></li>
+              <li class="linklist"><a href="#clp_qna">Q&amp;A</a></li>
             </ul>
           </td>
           <td width="25%">
@@ -88,12 +105,12 @@
       and then follow instructions.
     </div>
 
-  <a name="introduction"></a>
-  <div id="clp_introduction">
+  <a name="qna"></a>
+  <div id="clp_qna">
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
       <tr>
         <td nowrap width="25%" class="navbar">
-          Introduction
+          Q&amp;A
         </td>
         <td nowrap width="75%" class="navbar" style="text-align:right;">
           <a class="navbar" href="javascript:__PrintSection('clp_introduction','Introduction','.');"><img src="resources/print.gif" width="16" height="16" border="0" style="vertical-align:middle;" alt="Print"></a> 
@@ -101,7 +118,19 @@
       </tr>
     </table>
     <div class="mframe2">
-      <span class="TODO">[<b>TODO:</b> ...]</span>
+
+      <div style="margin-top:9pt"><b><a href="javascript:toggleNode('node0')">
+        Q: How do I turn off building the workspace before a dLabPro script is launched?
+      </a></b></div>
+      <div style="display:none; margin-top:3pt" id="node0">
+        <div class="nodecontent">
+          <b>A:</b> Select Window|Preferences, go to tab Run/Debug|Launching,
+          and uncheck "Build (if required) before launching" in the "General Options" 
+          group. Note, however, that this is a workspace setting, i.e. you will 
+          have to build manually before running or debugging C/C++ projects.
+        </div>
+      </div>
+    
     </div>
   </div>
 
