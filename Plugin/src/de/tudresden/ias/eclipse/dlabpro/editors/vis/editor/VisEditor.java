@@ -1,6 +1,7 @@
 
 package de.tudresden.ias.eclipse.dlabpro.editors.vis.editor;
 
+import java.io.CharConversionException;
 import java.io.File;
 import java.io.IOException;
 import java.util.AbstractCollection;
@@ -310,11 +311,7 @@ public class VisEditor extends EditorPart implements IOutlinePageListener,
       System.out.print("\nVisEditor: loading data file ...");
       midDocument = JlDataFile.readXml(new File(filePath),warnings);
     }
-    catch (IllegalArgumentException | IOException e)
-    {
-      throw new PartInitException("Cannot open data file.",e);
-    }
-    catch (SAXException e)
+    catch (SAXException | CharConversionException e)
     {
       // Try loading as audio file
       if (JlDataFile.isAudioFile(new File(filePath)))
@@ -370,7 +367,11 @@ public class VisEditor extends EditorPart implements IOutlinePageListener,
         }
       }
     }
-    
+    catch (IllegalArgumentException | IOException e)
+    {
+      throw new PartInitException("Cannot open data file.",e);
+    }
+
     // Consistency checks and automatic corrections
     if (midDocument.rinc==0.) { midDocument.runit=""; midDocument.rinc=1.; }
     if (midDocument.cinc==0.) { midDocument.cunit=""; midDocument.cinc=1.; }

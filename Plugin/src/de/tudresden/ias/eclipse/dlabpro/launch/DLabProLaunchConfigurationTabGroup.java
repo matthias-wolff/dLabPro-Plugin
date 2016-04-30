@@ -9,6 +9,7 @@ package de.tudresden.ias.eclipse.dlabpro.launch;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTabGroup;
 import org.eclipse.debug.ui.ILaunchConfigurationDialog;
 import org.eclipse.debug.ui.ILaunchConfigurationTab;
+import org.eclipse.debug.ui.RefreshTab;
 
 
 /**
@@ -28,7 +29,8 @@ public class DLabProLaunchConfigurationTabGroup extends AbstractLaunchConfigurat
     setTabs(new ILaunchConfigurationTab[]
     {
       new DLabProLaunchMainTab(),
-      new DLabProLaunchArgsTab()
+      new DLabProLaunchArgsTab(),
+      new RefreshTab()
     });
   }
 

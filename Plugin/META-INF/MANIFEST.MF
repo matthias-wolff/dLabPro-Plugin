@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: de.tudresden.ias.eclipse.dlabpro; singleton:=true
-Bundle-Version: 1.2.3.201603221150
+Bundle-Version: 1.2.3.201604300953
 Bundle-ClassPath: dlabpro.jar,
  lib/jLab-0.0.1-SNAPSHOT.jar
 Bundle-Activator: de.tudresden.ias.eclipse.dlabpro.DLabProPlugin
