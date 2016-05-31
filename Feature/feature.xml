@@ -2,7 +2,7 @@
 <feature
       id="dLabProPluginFeature"
       label="dLabPro Editors and Data Displays"
-      version="1.2.3.201604300953"
+      version="1.2.3.qualifier"
       provider-name="BTU Cottbus-Senftenbeg"
       plugin="de.tudresden.ias.eclipse.dlabpro">
 
@@ -19,7 +19,7 @@
    </license>
 
    <url>
-      <update label="dLabPro Update Sites" url="https://www-docs.tu-cottbus.de/kommunikationstechnik/public/updatesite"/>
+      <update label="dLabPro Update Site" url="https://rawgit.com/matthias-wolff/dLabPro-Plugin/master/Update-Site"/>
    </url>
 
    <requires>
