@@ -146,6 +146,16 @@ abstract public class CommonOutlinePage extends ContentOutlinePage
   }
 
   /**
+   * Loads a high resolution object icon image.
+   * @param sName the name of the image
+   * @return the image
+   */
+  public static final Image loadHiresObjIcon(String sName)
+  {
+    return DLabProPlugin.loadIconImage("icons/hires/obj/"+sName);
+  }
+
+  /**
    * This class represents a implementation of {@link ITreeContentProvider}. Is used from
    * subclasses to set the content provider.
    * 

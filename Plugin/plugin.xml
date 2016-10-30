@@ -5,7 +5,7 @@
      <extension point="org.eclipse.ui.editors">
    <editor
          class="de.tudresden.ias.eclipse.dlabpro.editors.itp.ITPEditor"
-         icon="icons/obj16/itp_file_obj.gif"
+         icon="icons/hires/obj/itpfile_obj.png"
          contributorClass="de.tudresden.ias.eclipse.dlabpro.editors.itp.ITPContributor"
          name="%editor.name"
          id="de.tudresden.ias.eclipse.dlabpro.editors.itp.itpeditor"
@@ -13,7 +13,7 @@
    </editor>
       <editor
          class="de.tudresden.ias.eclipse.dlabpro.editors.def.DEFEditor"
-         icon="icons/obj16/def_file_obj.gif"
+         icon="icons/hires/obj/deffile_obj.png"
          contributorClass="de.tudresden.ias.eclipse.dlabpro.editors.def.DEFContributor"
          name="%editor.name.0"
          id="de.tudresden.ias.eclipse.dlabpro.editors.def.defeditor"
@@ -22,14 +22,14 @@
       <editor
             class="de.tudresden.ias.eclipse.dlabpro.editors.vis.editor.VisEditor"
             extensions="dn3, wav, xml, data.xml"
-            icon="icons/obj16/vised_file_obj.gif"
+            icon="icons/hires/obj/visfile_obj.png"
             id="dLabPro.VisEditor"
             name="%editor.name.1"/>
       <editor
             class="de.tudresden.ias.eclipse.dlabpro.editors.itp.ITPEditor"
             contributorClass="de.tudresden.ias.eclipse.dlabpro.editors.itp.ITPContributor"
             extensions="xtp"
-            icon="icons/obj16/xtp_file_obj.gif"
+            icon="icons/hires/obj/xtpfile_obj.png"
             id="de.tudresden.ias.eclipse.dlabpro.editors.itp.xtpeditor"
             name="dLabPro Executable Script Editor">
       </editor>
@@ -95,7 +95,7 @@
          point="org.eclipse.debug.ui.launchConfigurationTypeImages">
       <launchConfigurationTypeImage
             configTypeID="de.tudresden.ias.eclipse.dlabpro.run.launch.itp.itplaunchconfigurationtype"
-            icon="icons/hires/run_dlabpro.png"
+            icon="icons/hires/etool/run_dlabpro.png"
             id="de.tudresden.ias.eclipse.dlabpro.run.launch.DLabProLaunchConfigurationImage">
       </launchConfigurationTypeImage>
    </extension>
@@ -291,7 +291,7 @@
       point="org.eclipse.ui.perspectives">
    <perspective
          class="de.tudresden.ias.eclipse.dlabpro.perspectives.DLabProPerspective"
-         icon="icons/eview16/dlabpro_pers.gif"
+         icon="icons/hires/dlabpro.png"
          id="de.tudresden.ias.eclipse.dlabpro.dlabproperspective"
          name="%perspective.name"/>
 </extension>
@@ -361,7 +361,7 @@
          <action
                class="de.tudresden.ias.eclipse.dlabpro.actions.RunDlabProActionDelegate"
                enablesFor="*"
-               icon="icons/hires/run_dlabpro.png"
+               icon="icons/hires/etool/run_dlabpro.png"
                id="de.tudresden.ias.eclipse.dlabpro.dLabProRunAction"
                label="%action.label.19"
                menubarPath="org.eclipse.ui.run/dLabProGroup"
@@ -377,7 +377,7 @@
       <shortcut
             class="de.tudresden.ias.eclipse.dlabpro.launch.XtpLaunchShortcut"
             description="%shortcut.description"
-            icon="icons/hires/run_dlabpro.png"
+            icon="icons/hires/etool/run_dlabpro.png"
             id="dLabPro Plugin.XtpLaunchShortcut"
             label="%shortcut.label"
             modes="run">
@@ -432,9 +432,6 @@
             </instanceof>
          </enabledWhen>
       </page>
-   </extension>
-   <extension
-         point="org.eclipse.ui.propertyPages">
       <page
             class="de.tudresden.ias.eclipse.dlabpro.properties.XtpPropertyPage"
             id="de.tudresden.ias.eclipse.dlabpro.properties.ItpPropertyPage"

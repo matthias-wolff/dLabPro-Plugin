@@ -47,8 +47,8 @@ public class DefOutlinePage extends CommonOutlinePage
     private final Image iIconOptionList  = loadObjIcon("option_list.gif"  );
     private final Image iIconOptionObj   = loadObjIcon("option_obj.gif"   );
     private final Image iIconErrorList   = loadObjIcon("error_list.gif"   );
-    private final Image iIconErrorObj    = loadObjIcon("error_obj.gif"    );
-    private final Image iIconWarningObj  = loadObjIcon("warning_obj.gif"  );
+    private final Image iIconErrorObj    = loadHiresObjIcon("error_obj.png"    );
+    private final Image iIconWarningObj  = loadHiresObjIcon("warning_obj.png"  );
     private final Image iIconNoteObj     = loadObjIcon("note_obj.gif"     );
     private final Image iIconDefineList  = loadObjIcon("define_list.gif"  );
     private final Image iIconDefineObj   = loadObjIcon("define_obj.gif"   );
