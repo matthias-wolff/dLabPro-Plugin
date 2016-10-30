@@ -95,7 +95,7 @@
          point="org.eclipse.debug.ui.launchConfigurationTypeImages">
       <launchConfigurationTypeImage
             configTypeID="de.tudresden.ias.eclipse.dlabpro.run.launch.itp.itplaunchconfigurationtype"
-            icon="icons/obj16/xtp_obj.gif"
+            icon="icons/hires/run_dlabpro.png"
             id="de.tudresden.ias.eclipse.dlabpro.run.launch.DLabProLaunchConfigurationImage">
       </launchConfigurationTypeImage>
    </extension>
@@ -361,7 +361,7 @@
          <action
                class="de.tudresden.ias.eclipse.dlabpro.actions.RunDlabProActionDelegate"
                enablesFor="*"
-               icon="icons/etool16/run_dlabpro.gif"
+               icon="icons/hires/run_dlabpro.png"
                id="de.tudresden.ias.eclipse.dlabpro.dLabProRunAction"
                label="%action.label.19"
                menubarPath="org.eclipse.ui.run/dLabProGroup"
@@ -377,7 +377,7 @@
       <shortcut
             class="de.tudresden.ias.eclipse.dlabpro.launch.XtpLaunchShortcut"
             description="%shortcut.description"
-            icon="icons/obj16/xtp_obj.gif"
+            icon="icons/hires/run_dlabpro.png"
             id="dLabPro Plugin.XtpLaunchShortcut"
             label="%shortcut.label"
             modes="run">
