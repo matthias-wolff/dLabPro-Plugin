@@ -74,6 +74,7 @@ public class DefParser extends CommonParser implements IKeywordConstants
         int id = -1;
         if (text.startsWith("CLASS:")) id = ClassSection.CLASS;
         if (text.startsWith("/cLib CLASS:")) id = ClassSection.cLib_CLASS;
+        if (text.startsWith("/cLib PROJECT:")) id = ClassSection.cLib_CLASS;
         if (id >= 0)
         {
           String name = getClassSectionName(text);

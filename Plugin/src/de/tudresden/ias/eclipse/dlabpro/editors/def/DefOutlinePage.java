@@ -35,28 +35,29 @@ public class DefOutlinePage extends CommonOutlinePage
   private static class DefLabelProvider extends LabelProvider
   {
 
-    private final Image iIconClassObj    = loadObjIcon("class_obj.gif"    );
-    private final Image iIconLibObj      = loadObjIcon("lib_obj.gif"      );
-    private final Image iIconList        = loadObjIcon("list.gif"         );
-    private final Image iIconMethodList  = loadObjIcon("method_list.gif"  );
-    private final Image iIconMethodObj   = loadObjIcon("method_obj.gif"   );
-    private final Image iIconFieldList   = loadObjIcon("field_list.gif"   );
-    private final Image iIconPubFieldObj = loadObjIcon("pub_field_obj.gif");
-    private final Image iIconPrtFieldObj = loadObjIcon("prt_field_obj.gif");
-    private final Image iIconPrvFieldObj = loadObjIcon("prv_field_obj.gif");
-    private final Image iIconOptionList  = loadObjIcon("option_list.gif"  );
-    private final Image iIconOptionObj   = loadObjIcon("option_obj.gif"   );
-    private final Image iIconErrorList   = loadObjIcon("error_list.gif"   );
-    private final Image iIconErrorObj    = loadHiresObjIcon("error_obj.png"    );
-    private final Image iIconWarningObj  = loadHiresObjIcon("warning_obj.png"  );
-    private final Image iIconNoteObj     = loadObjIcon("note_obj.gif"     );
-    private final Image iIconDefineList  = loadObjIcon("define_list.gif"  );
-    private final Image iIconDefineObj   = loadObjIcon("define_obj.gif"   );
-    private final Image iIconFileList    = loadObjIcon("file_list.gif"    );
-    private final Image iIconCFileObj    = loadObjIcon("c_file_obj.gif"   );
-    private final Image iIconHFileObj    = loadObjIcon("h_file_obj.gif"   );
-    private final Image iIconSnippetList = loadObjIcon("snippet_list.gif" );
-    private final Image iIconSnippetObj  = loadObjIcon("snippet_obj.gif"  );
+    private final Image iIconClassObj    = loadObjIcon("class_obj.png"          );
+    private final Image iIconLibObj      = loadObjIcon("clibrary_obj.png"       );
+    private final Image iIconList        = loadObjIcon("list_obj.png"           );
+    private final Image iIconMethodList  = loadObjIcon("method_list.png"        );
+    private final Image iIconMethodObj   = loadObjIcon("method_public_obj.png"  );
+    private final Image iIconFieldList   = loadObjIcon("field_list.png"         );
+    private final Image iIconPubFieldObj = loadObjIcon("field_public_obj.png"   );
+    private final Image iIconPrtFieldObj = loadObjIcon("field_protected_obj.png");
+    private final Image iIconPrvFieldObj = loadObjIcon("field_private_obj.png"  );
+    private final Image iIconOptionList  = loadObjIcon("option_list.png"        );
+    private final Image iIconOptionObj   = loadObjIcon("option_obj.png"         );
+    private final Image iIconErrorList   = loadObjIcon("error_list.png"         );
+    private final Image iIconErrorObj    = loadObjIcon("error_obj.png"          );
+    private final Image iIconWarningObj  = loadObjIcon("warning_obj.png"        );
+    private final Image iIconNoteList    = loadObjIcon("note_list.png"          );
+    private final Image iIconNoteObj     = loadObjIcon("note_obj.png"           );
+    private final Image iIconDefineList  = loadObjIcon("define_list.png"        );
+    private final Image iIconDefineObj   = loadObjIcon("define_obj.png"         );
+    private final Image iIconFileList    = loadObjIcon("file_list.png"          );
+    private final Image iIconCFileObj    = loadObjIcon("cfile_obj.png"          );
+    private final Image iIconHFileObj    = loadObjIcon("hfile_obj.png"          );
+    private final Image iIconSnippetList = loadObjIcon("snippet_list.png"       );
+    private final Image iIconSnippetObj  = loadObjIcon("snippet_obj.png"        );
 
     /*
      * (non-Javadoc)
@@ -99,7 +100,7 @@ public class DefOutlinePage extends CommonOutlinePage
           if (type == SegmentGroup.TYPE_INTERFACE_CODE_SNIPPETS) return iIconSnippetList;
 
           if (type == SegmentGroup.TYPE_ERROR) return iIconErrorList;
-          if (type == SegmentGroup.TYPE_NOTE) return iIconNoteObj;
+          if (type == SegmentGroup.TYPE_NOTE) return iIconNoteList;
           if (type == SegmentGroup.TYPE_DEFINE) return iIconDefineList;
           if (type == SegmentGroup.TYPE_FILE) return iIconFileList;
           // if (type == SegmentGroup.TYPE_RESEINCLUDES) return
@@ -161,6 +162,7 @@ public class DefOutlinePage extends CommonOutlinePage
       if (iIconErrorList   != null) iIconErrorList  .dispose();
       if (iIconErrorObj    != null) iIconErrorObj   .dispose();
       if (iIconWarningObj  != null) iIconWarningObj .dispose();
+      if (iIconNoteList    != null) iIconNoteList   .dispose();
       if (iIconNoteObj     != null) iIconNoteObj    .dispose();
       if (iIconDefineList  != null) iIconDefineList .dispose();
       if (iIconDefineObj   != null) iIconDefineObj  .dispose();

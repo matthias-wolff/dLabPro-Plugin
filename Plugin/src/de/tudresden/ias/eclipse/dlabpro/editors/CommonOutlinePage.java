@@ -140,7 +140,7 @@ abstract public class CommonOutlinePage extends ContentOutlinePage
    * @param sName the name of the image
    * @return the image
    */
-  public static final Image loadObjIcon(String sName)
+  public static final Image loadLoresObjIcon(String sName)
   {
     return DLabProPlugin.loadIconImage("icons/obj16/"+sName);
   }
@@ -150,7 +150,7 @@ abstract public class CommonOutlinePage extends ContentOutlinePage
    * @param sName the name of the image
    * @return the image
    */
-  public static final Image loadHiresObjIcon(String sName)
+  public static final Image loadObjIcon(String sName)
   {
     return DLabProPlugin.loadIconImage("icons/hires/obj/"+sName);
   }

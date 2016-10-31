@@ -111,7 +111,7 @@
          id="de.tudresden.ias.eclipse.dlabpro.run.actions.def.defeditorpopup">
       <action
             class="de.tudresden.ias.eclipse.dlabpro.actions.editor.ToggleCommentAction"
-            icon="icons/etool16/comment_edit.gif"
+            icon="icons/hires/etool/toggle_comment.png"
             id="de.tudresden.ias.eclipse.dlabpro.run.actions.def.deftogglecommentaction"
             label="%action.label"
             menubarPath="additions"/>
@@ -121,7 +121,7 @@
          targetID="#ItpEditorContext">
       <action
             class="de.tudresden.ias.eclipse.dlabpro.actions.editor.ToggleCommentAction"
-            icon="icons/etool16/comment_edit.gif"
+            icon="icons/hires/etool/toggle_comment.png"
             id="de.tudresden.ias.eclipse.dlabpro.run.actions.itp.itptogglecommentaction"
             label="%action.label.0"
             menubarPath="additions"/>
@@ -399,7 +399,7 @@
       <shortcut
             class="de.tudresden.ias.eclipse.dlabpro.launch.DefLaunchShortcut"
             description="%shortcut.description.0"
-            icon="icons/obj16/dlabro_class_obj.gif"
+            icon="icons/hires/obj/class_obj.png"
             id="dLabPro Plugin.DefLaunchShortcut"
             label="%shortcut.label.0"
             modes="run">

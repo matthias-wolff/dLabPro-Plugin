@@ -20,11 +20,11 @@ public class ItpOutlinePage extends CommonOutlinePage
 
   private static class ItpLabelProvider extends LabelProvider
   {
-    private final Image iIconFunctionList = loadObjIcon("function_list.gif");
-    private final Image iIconFunctionObj  = loadObjIcon("function_obj.gif" );
-    private final Image iIconFunctionsObj = loadObjIcon("functions_obj.gif");
-    private final Image iIconIncludeList  = loadObjIcon("include_list.gif" );
-    private final Image iIconIncludeObj   = loadObjIcon("include_obj.gif"  );
+    private final Image iIconFunctionList = loadLoresObjIcon("function_list.gif");
+    private final Image iIconFunctionObj  = loadLoresObjIcon("function_obj.gif" );
+    private final Image iIconFunctionsObj = loadLoresObjIcon("functions_obj.gif");
+    private final Image iIconIncludeList  = loadLoresObjIcon("include_list.gif" );
+    private final Image iIconIncludeObj   = loadLoresObjIcon("include_obj.gif"  );
 
     public String getText(Object element)
     {
