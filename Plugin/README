@@ -1,1 +1,2 @@
+Run Maven goal "package" to create dlabpro-*.jar!
 Run Maven goal "process-sources" to copy dependent Maven artifacts to lib folder!
