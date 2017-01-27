@@ -3,7 +3,7 @@
    <description name="dLabPro Update Site" url="https://rawgit.com/matthias-wolff/dLabPro-Plugin/master/Update-Site">
       The dLabPro plug-in update site
    </description>
-   <feature url="features/dLabProPluginFeature_1.2.3.201701271615.jar" id="dLabProPluginFeature" version="1.2.3.201701271615">
+   <feature url="features/dLabProPluginFeature_1.2.3.201701271619.jar" id="dLabProPluginFeature" version="1.2.3.201701271619">
       <category name="dLabProPlugin"/>
    </feature>
    <category-def name="dLabProPlugin" label="dLabPro Plugin"/>
