@@ -3,8 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: de.tudresden.ias.eclipse.dlabpro; singleton:=true
 Bundle-Version: 1.2.3.qualifier
-Bundle-ClassPath: dlabpro.jar,
- lib/jLab-0.0.1-SNAPSHOT.jar
 Bundle-Activator: de.tudresden.ias.eclipse.dlabpro.DLabProPlugin
 Bundle-Vendor: %Bundle-Vendor
 Bundle-Localization: plugin
@@ -231,3 +229,4 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7,
  JavaSE-1.8
+Bundle-ClassPath: lib/jLab-0.0.1-SNAPSHOT.jar
