@@ -19,7 +19,7 @@
    </license>
 
    <url>
-      <update label="dLabPro Update Site" url="https://rawgit.com/matthias-wolff/dLabPro-Plugin/master/Update-Site"/>
+      <update label="dLabPro Update Site" url="https://cdn.jsdelivr.net/gh/matthias-wolff/dLabPro-Plugin@master/Update-Site"/>
    </url>
 
    <requires>
